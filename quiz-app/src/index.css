@@ -1,1 +1,163 @@
 @import "tailwindcss";
+
+/* rubik-light */
+@font-face {
+  font-display: swap;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/rubik-v31-latin-300.woff2") format("woff2");
+}
+/* rubik-regular  */
+@font-face {
+  font-display: swap;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/rubik-v31-latin-regular.woff2") format("woff2");
+}
+/* rubik-italic  */
+@font-face {
+  font-display: swap;
+  font-family: "Rubik";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/rubik-v31-latin-italic.woff2") format("woff2");
+}
+/* rubik-medium  */
+@font-face {
+  font-display: swap;
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/rubik-v31-latin-500.woff2") format("woff2");
+}
+
+@theme {
+  /* Fonts COLLECTION */
+  --font-rubik: "Rubik", monospace;
+
+  /* Colors COLLECTION */
+  --colors-white: #ffffff;
+  --colors-grey-500: #626c7f;
+  --colors-grey-50: #f4f6fa;
+  --colors-blue-50: #ebf0ff;
+  --colors-blue-500: #306aff;
+  --colors-blue-900: #313e51;
+  --colors-blue-100: #edf1f9;
+  --colors-green-100: #e0fdef;
+  --colors-green-500: #2fd887;
+  --colors-purple-100: #f6e7ff;
+  --colors-purple-600: #a729f5;
+  --colors-orange-50: #fff5ed;
+  --colors-orange-400: #ff7e35;
+  --colors-red-500: #ee5454;
+  --colors-black: #000000;
+  --colors-blue-300: #abc1e1;
+  --colors-blue-950: #2d3949;
+  --colors-blue-850: #3b4d66;
+}
+
+/* Typography COLLECTION */
+
+@utility text-preset-1 {
+  font-family: var(--font-rubik);
+  font-weight: 500;
+  font-size: 9rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+@utility text-preset-2 {
+  font-family: var(--font-rubik);
+  font-weight: 500;
+  font-size: 4rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+@utility text-preset-2-light {
+  font-family: var(--font-rubik);
+  font-weight: 300;
+  font-size: 4rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+@utility text-preset-3 {
+  font-family: var(--font-rubik);
+  font-weight: 500;
+  font-size: 2.25rem;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+@utility text-preset-4 {
+  font-family: var(--font-rubik);
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+@utility text-preset-5 {
+  font-family: var(--font-rubik);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+@utility text-preset-5-regular {
+  font-family: var(--font-rubik);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+@utility text-preset-6 {
+  font-family: var(--font-rubik);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+/* Mobile */
+@utility text-preset-1-mobile {
+  font-family: var(--font-rubik);
+  font-weight: 500;
+  font-size: 5.5rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+@utility text-preset-2-mobile {
+  font-family: var(--font-rubik);
+  font-weight: 500;
+  font-size: 2.5rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+@utility text-preset-2-mobile-light {
+  font-family: var(--font-rubik);
+  font-weight: 300;
+  font-size: 2.5rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+@utility text-preset-3-mobile {
+  font-family: var(--font-rubik);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+@utility text-preset-4-mobile {
+  font-family: var(--font-rubik);
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+@utility text-preset-5-mobile {
+  font-family: var(--font-rubik);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 150%;
+  letter-spacing: 0;
+}
