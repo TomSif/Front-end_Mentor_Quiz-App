@@ -38,24 +38,24 @@
   --font-rubik: "Rubik", monospace;
 
   /* Colors COLLECTION */
-  --colors-white: #ffffff;
-  --colors-grey-500: #626c7f;
-  --colors-grey-50: #f4f6fa;
-  --colors-blue-50: #ebf0ff;
-  --colors-blue-500: #306aff;
-  --colors-blue-900: #313e51;
-  --colors-blue-100: #edf1f9;
-  --colors-green-100: #e0fdef;
-  --colors-green-500: #2fd887;
-  --colors-purple-100: #f6e7ff;
-  --colors-purple-600: #a729f5;
-  --colors-orange-50: #fff5ed;
-  --colors-orange-400: #ff7e35;
-  --colors-red-500: #ee5454;
-  --colors-black: #000000;
-  --colors-blue-300: #abc1e1;
-  --colors-blue-950: #2d3949;
-  --colors-blue-850: #3b4d66;
+  --color-white: #ffffff;
+  --color-grey-500: #626c7f;
+  --color-grey-50: #f4f6fa;
+  --color-blue-50: #ebf0ff;
+  --color-blue-500: #306aff;
+  --color-blue-900: #313e51;
+  --color-blue-100: #edf1f9;
+  --color-green-100: #e0fdef;
+  --color-green-500: #2fd887;
+  --color-purple-100: #f6e7ff;
+  --color-purple-600: #a729f5;
+  --color-orange-50: #fff5ed;
+  --color-orange-400: #ff7e35;
+  --color-red-500: #ee5454;
+  --color-black: #000000;
+  --color-blue-300: #abc1e1;
+  --color-blue-950: #2d3949;
+  --color-blue-850: #3b4d66;
 }
 
 /* Typography COLLECTION */
@@ -161,3 +161,8 @@
   line-height: 150%;
   letter-spacing: 0;
 }
+
+/* Dark mode is manually controlled via UI toggle.
+   prefers-color-scheme is intentionally ignored —
+   the app manages its own theme (native app-like behavior) */
+@variant dark (&:where(.dark, .dark *));
