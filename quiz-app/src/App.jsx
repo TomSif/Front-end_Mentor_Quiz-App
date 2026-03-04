@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Quiz from "./components/Quiz";
@@ -20,6 +19,7 @@ function App() {
   const views = {
     home: (
       <Home
+        mode={mode}
         onStart={(chosenSubject) => {
           setSubject(chosenSubject);
           setCurrentView("quiz");
@@ -46,10 +46,39 @@ function App() {
   };
 
   return (
-    <>
-      <Header mode={mode} onToggleMode={toggleMode} subject={subject} />
-      <div>{views[currentView]}</div>
-    </>
+    <div className="relative w-auto overflow-hidden py-4 px-8 transition-all duration-300 dark:bg-blue-900 bg-grey-50">
+      <picture className="absolute z-0 transition-all duration-300">
+        <source
+          srcSet={
+            mode === "dark"
+              ? "/images/pattern-background-desktop-dark.svg"
+              : "/images/pattern-background-desktop-light.svg"
+          }
+          media="(min-width: 1024px)"
+        />
+        <source
+          srcSet={
+            mode === "dark"
+              ? "/images/pattern-background-tablet-dark.svg"
+              : "/images/pattern-background-tablet-light.svg"
+          }
+          media="(min-width: 768px)"
+        />
+        <source
+          srcSet={
+            mode === "dark"
+              ? "/images/pattern-background-mobile-dark.svg"
+              : "/images/pattern-background-mobile-light.svg"
+          }
+          media="(min-width: 480px)"
+        />
+        <img src="/images/pattern-background-mobile-light.svg" alt="" />
+      </picture>
+      <div className="z-10 flex flex-col w-auto">
+        <Header mode={mode} onToggleMode={toggleMode} subject={subject} />
+        <div>{views[currentView]}</div>
+      </div>
+    </div>
   );
 }
 

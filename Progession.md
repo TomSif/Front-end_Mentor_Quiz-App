@@ -1,3 +1,59 @@
+## Session 2026-03-03 — App.jsx + Header + SubjectBadge
+
+### ✅ Étapes accomplies
+
+- `App.jsx` : boilerplate Vite vidé, 4 states (`currentView`, `score`, `mode`, `subject`), `toggleMode`, pattern objet `views[currentView]`, callbacks `onStart`/`onFinish`/`onRestart` correctement câblés
+- `src/components/` créé avec 3 stubs : `Home.jsx`, `Quiz.jsx`, `Results.jsx`
+- `Header.jsx` : balise `<header>` sémantique, toggle dark/light avec `role="switch"` + `aria-checked`, thumb animé avec `translate-x`, icônes soleil/lune SVG, `SubjectBadge` conditionnel (`{subject && ...}`)
+- `SubjectBadge.jsx` créé — composant réutilisable (Header + SubjectCard à venir)
+- `index.css` : `@variant dark` ajouté pour toggle manuel via classe `.dark` sur `<html>`, tokens renommés `--colors-*` → `--color-*`
+- `onStart` corrigé pour transporter `chosenSubject` jusqu'à `setSubject` dans App
+
+### 🧠 Notions de code vues
+
+| Notion | Statut | Commentaire |
+| --- | --- | --- |
+| Pattern objet `views[currentView]` | Nouvelle | Alternative propre aux chaînes de ternaires — lookup direct |
+| Callback pattern (props fonctions) | Révisée | A nécessité une session avec Claude en ligne avant de comprendre — notion fragile |
+| `role="switch"` + `aria-checked` | Nouvelle | Sémantique ARIA pour toggle accessible |
+| `translate-x` conditionnel pour thumb | Nouvelle | Plus fiable que flex alignment pour positionner un cercle dans un track |
+| `@variant dark` Tailwind v4 | Nouvelle | Remplace `darkMode: 'class'` de Tailwind v3 — une ligne dans CSS |
+| `document.documentElement.classList.toggle()` | Nouvelle | Applique `.dark` sur `<html>` pour activer les classes `dark:` Tailwind |
+| Prop vs callback — distinction de placement | Révisée | Confusion initiale : `score={score}` mis à l'intérieur du callback `onRestart` au lieu d'être une prop directe sur `<Results>` |
+| `useState(null)` + rendu conditionnel | Révisée | `{subject && <SubjectBadge />}` — pattern correct pour état absent |
+| Variants composant — objet JS vs `@utility` | Nouvelle | Décision : variants d'un composant restent dans le composant (objet JS), pas dans le CSS global |
+
+### ⚠️ Notions faussement acquises détectées
+
+- **Callback pattern** : le flux de données descendant/remontant (prop fonction appelée dans l'enfant, résultat remonté au parent) n'était pas ancré. A requis une session externe avant d'être opérationnel. À surveiller en Quiz et Results.
+- **Prop vs placement dans handler** : a placé `score={score}` à l'intérieur du callback `onRestart` — confusion entre "passer une donnée à un composant" et "exécuter une action au clic".
+
+### 🔄 Étapes restantes
+
+- `Home.jsx` : import `data.json`, map des sujets → `SubjectCard`, appel `onStart(subject)`
+- `SubjectCard.jsx` : composant cliquable avec `SubjectBadge` intégré
+- `Quiz.jsx` : affichage question + progress, liste `AnswerOption`
+- `AnswerOption.jsx` : 5 états visuels (idle, selected, correct, incorrect, disabled)
+- `Results.jsx` : score final, bouton rejouer
+- Logique de vérification des réponses + comptage score
+- `subject` passé en prop à `Quiz` (manquant actuellement dans App.jsx)
+- Dark mode : classes `dark:` à appliquer sur tous les composants
+- Navigation clavier / accessibilité (`useRef` pour focus management)
+
+### 📈 Évaluation de session
+
+- **Points solides :** Choix architecturaux tous corrects et autonomes (objet views, subject state, où appeler setSubject, SubjectBadge comme composant partagé). Balise sémantique (`<header>`) adoptée spontanément. Dark mode câblé proprement.
+- **Points fragiles :** Callback pattern — a eu besoin d'aide externe. Confusion prop/handler sur `score`. Ces deux points sont liés : la circulation des données entre composants reste instable.
+- **Priorité pour la prochaine session :** `Home.jsx` — import JSON, map de données, `onStart(subject)` appelé depuis `SubjectCard`. Écriture autonome.
+
+### 💬 Notes de contexte
+
+- `subject` n'est pas encore passé en prop à `<Quiz>` dans App.jsx — à corriger en session 3 quand Quiz sera développé
+- `SubjectBadge` utilisé dans Header, sera aussi utilisé dans SubjectCard — décision de composition validée
+- `--color-*` (sans 's') est la convention correcte Tailwind v4 dans `@theme`
+
+---
+
 ## Session 2026-03-02 — Architecture & Setup
 
 ### ✅ Étapes accomplies
