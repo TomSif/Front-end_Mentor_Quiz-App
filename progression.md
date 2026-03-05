@@ -1,3 +1,56 @@
+## Session 2026-03-05 — Quiz.jsx : logique interactive complète
+
+### ✅ Étapes accomplies
+
+- `selectedAnswer` + `hasSubmited` states ajoutés
+- `calculateScore()` : forme fonctionnelle `setScore(prev => prev + 1)` — corrigé depuis `var` + opérateur `+=`
+- `useEffect` pour `onFinish(score)` sur la dernière question — résout le bug async setState
+- Bouton unique à double comportement : "Submit Answer" / "Next Question" / "See Results" selon `hasSubmited` et `questionIndex`
+- `onClick` conditionnel : soumission au 1er clic, avance au 2e (avec reset des states uniquement si pas dernière question)
+- États visuels des options : bordure violette (selected), verte (correct), rouge (incorrect), transparente (idle) — logique ternaire imbriquée
+- Icônes ✓ / ✗ affichées après soumission + placeholder `w-6` pour éviter le layout shift
+- `disabled={hasSubmited}` sur les boutons option pour bloquer le reclic après soumission
+
+### 🧠 Notions de code vues
+
+| Notion | Statut | Commentaire |
+| --- | --- | --- |
+| `useEffect` pour effet de bord sur changement de state | Nouvelle | Utilisé pour résoudre le bug async setState sur `onFinish(score)` — bien compris pourquoi ça résout le problème |
+| Tableau de dépendances `useEffect` | Nouvelle | Toutes les variables lues dans l'effet listées — raisonnement correct |
+| Async setState — valeur stale dans closure | Nouvelle | Compris que `console.log(score)` après `setScore` montre l'ancienne valeur. Notion à consolider |
+| Ternaire imbriqué pour états visuels multiples | Révisée | 4 cas (selected/correct/incorrect/transparent) gérés proprement dans le className |
+| `active:` CSS vs état persistant JS | Nouvelle | Compris que `:active` est éphémère — un état "sélectionné qui persiste" nécessite JS |
+| `var` obsolète en JS moderne | Révisée | Utilisé spontanément, corrigé — réflexe à ancrer |
+| Forme fonctionnelle `setState(prev => prev + 1)` | Révisée | Compris et appliqué correctement |
+
+### ⚠️ Notions faussement acquises détectées
+
+- **`var` en JS moderne** : utilisé spontanément dans `calculateScore`. Pas une notion "faussement acquise" au sens strict, mais un vieux réflexe qui remonte — à surveiller.
+- **Async setState** : le comportement de `console.log(score)` après `setScore` a surpris. La notion de valeur stale dans une closure React n'était pas ancrée.
+
+### 🔄 Étapes restantes
+
+- `Results.jsx` : affichage score final + bouton rejouer
+- Barre de progression (`questionIndex / totalQuestions`)
+- Dark mode : classes `dark:` à compléter sur Quiz et Results
+- Responsive : vérification layout desktop Quiz
+- Accessibilité : `legend` contenu sémantique à corriger (actuellement "X out of Y" — devrait décrire le groupe)
+
+### 📈 Évaluation de session
+
+- **Points solides :** Logique interactive posée de façon autonome. Ternaires imbriqués pour les états visuels écrits sans aide. Réflexe de commit avant refactoring risqué. `!hasSubmited` ajouté spontanément pour corriger le comportement de la bordure violette.
+- **Points fragiles :** Async setState — notion vue aujourd'hui, pas encore ancrée. Le bug de `questionIndex === totalQuestions` (crash potentiel) aurait pu passer sans détection.
+- **Priorité pour la prochaine session :** `Results.jsx` — affichage du score + bouton rejouer. Puis barre de progression.
+
+### 💬 Notes de contexte
+
+- Solution bouton unique à double comportement trouvée par l'utilisateur — plus élégante que deux boutons séparés
+- `onFinish(score)` géré par `useEffect` : Score correct garanti car l'effet s'exécute après le rendu avec les states à jour
+- "See Results" ne sera probablement jamais cliqué (useEffect déclenche avant) mais sert de fallback cohérent
+- `hasSubmited` comme garde dans `disabled` du bouton Submit évite le double scoring
+
+---
+
 ## Session 2026-03-04 (après-midi) — Quiz.jsx : affichage de base
 
 ### ✅ Étapes accomplies

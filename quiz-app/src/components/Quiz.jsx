@@ -39,34 +39,67 @@ function Quiz({ subject, onFinish }) {
           {currentQuestion.options.map((option, index) => (
             <li key={index}>
               <button
+                disabled={hasSubmited}
                 onClick={() => {
                   setSelectedAnswer(option);
                   console.log(option);
                 }}
-                className="flex  gap-4 md:gap-8 p-4 items-center w-full  rounded-lg text-blue-900 dark:bg-blue-850 dark:text-white bg-white text-preset-4-mobile md:text-preset-4"
+                className={`flex  gap-4 md:gap-8 p-4 items-center w-full  rounded-lg text-blue-900 dark:bg-blue-850 dark:text-white bg-white text-preset-4-mobile md:text-preset-4 ${
+                  selectedAnswer === option && !hasSubmited
+                    ? "border-purple-500 border-2"
+                    : hasSubmited && option === currentQuestion.answer
+                      ? "border-green-500 border-2"
+                      : hasSubmited && selectedAnswer === option
+                        ? "border-red-500 border-2"
+                        : "border-2 border-transparent"
+                }`}
               >
                 <span className="flex items-center justify-center w-10 h-10 rounded-md bg-grey-50 text-grey-500 ">
                   {iconLetters[index]}
                 </span>
-                <span className="dark:text-white text-blue-900">{option}</span>
+                <span className="flex justify-between w-full item-center">
+                  <span className="dark:text-white text-blue-900">
+                    {option}
+                  </span>
+                  {hasSubmited && option === currentQuestion.answer ? (
+                    <span className="w-6">
+                      <img src="/images/icon-correct.svg" alt="" />
+                    </span>
+                  ) : hasSubmited && selectedAnswer === option ? (
+                    <span className="w-6">
+                      <img src="/images/icon-incorrect.svg" alt="" />
+                    </span>
+                  ) : (
+                    <span className="w-6"></span>
+                  )}
+                </span>
               </button>
             </li>
           ))}
         </ul>
         <button
-          disabled={selectedAnswer === null || hasSubmited}
+          disabled={selectedAnswer === null}
           onClick={() => {
-            setHasSubmited(true);
-            calculateScore(selectedAnswer);
-            if (questionIndex !== totalQuestions - 1) {
-              setQuestionIndex((prev) => prev + 1);
-              setSelectedAnswer(null);
-              setHasSubmited(false);
+            if (!hasSubmited) {
+              //first click
+              setHasSubmited(true);
+              calculateScore(selectedAnswer);
+            } else {
+              //second click
+              if (questionIndex !== totalQuestions - 1) {
+                setQuestionIndex((prev) => prev + 1);
+                setSelectedAnswer(null);
+                setHasSubmited(false);
+              }
             }
           }}
           className="bg-purple-600 w-full p-4 md:p-8 text-white rounded-lg hover:bg-purple-50 text-preset-4-mobile md:text-preset-4"
         >
-          Submit Answer
+          {!hasSubmited
+            ? "Submit Answer"
+            : questionIndex !== totalQuestions - 1
+              ? "Next Question "
+              : "See Results"}
         </button>
       </div>
     </fieldset>
