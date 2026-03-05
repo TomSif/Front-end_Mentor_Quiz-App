@@ -28,6 +28,7 @@ function App() {
     ),
     quiz: (
       <Quiz
+        subject={subject}
         onFinish={(finalScore) => {
           setScore(finalScore);
           setCurrentView("results");
@@ -47,7 +48,7 @@ function App() {
 
   return (
     <div className="relative w-auto overflow-hidden py-4 px-8 transition-all duration-300 dark:bg-blue-900 bg-grey-50">
-      <picture className="absolute z-0 transition-all duration-300">
+      <picture className="absolute top-0 left-0 z-0 transition-all duration-300">
         <source
           srcSet={
             mode === "dark"
@@ -74,9 +75,9 @@ function App() {
         />
         <img src="/images/pattern-background-mobile-light.svg" alt="" />
       </picture>
-      <div className="z-10 flex flex-col w-auto">
+      <div className="z-20 flex flex-col w-auto">
         <Header mode={mode} onToggleMode={toggleMode} subject={subject} />
-        <div>{views[currentView]}</div>
+        <div className="z-20">{views[currentView]}</div>
       </div>
     </div>
   );

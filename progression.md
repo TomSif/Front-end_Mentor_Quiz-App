@@ -1,3 +1,50 @@
+## Session 2026-03-04 (après-midi) — Quiz.jsx : affichage de base
+
+### ✅ Étapes accomplies
+
+- `Quiz.jsx` : `questionIndex` state, `currentQuiz.find()`, `currentQuestion`, `totalQuestions` — structure de données posée correctement
+- Affichage "X out of Y" en texte
+- `.map()` sur `options` avec `iconLetters[index]` en parallèle — options affichées avec badge lettre (A/B/C/D)
+- Bouton option stylé avec dark mode (`dark:bg-blue-850`, `dark:text-white`)
+- `App.jsx` : `subject` passé en prop à `<Quiz>`, `onFinish(finalScore)` câblé → `setScore` + `setCurrentView("results")`
+
+### 🧠 Notions de code vues
+
+| Notion | Statut | Commentaire |
+| --- | --- | --- |
+| Import JSON + `.find()` | Révisée | Utilisé sans aide — bonne consolidation |
+| `.map()` avec `index` double (données + lettre) | Révisée | `iconLetters[index]` en parallèle du `.map()` sur `options` — pattern correct |
+| `useState` pour index courant | Révisée | Structure posée proprement |
+| Callback `onFinish` reçu en prop | Révisée | Câblage App ↔ Quiz correct |
+
+### ⚠️ Notions faussement acquises détectées
+
+- Aucune détectée cette session
+
+### 🔄 Étapes restantes
+
+- `Quiz.jsx` : `selectedAnswer` state + clic sur option → mise à jour état
+- `Quiz.jsx` : `hasSubmitted` state → bouton Submit → vérification contre `currentQuestion.answer`
+- `Quiz.jsx` : incrément score si correct, `onFinish(score)` quand toutes les questions épuisées
+- `Quiz.jsx` : barre de progression (`questionIndex / totalQuestions`)
+- `AnswerOption.jsx` : 5 états visuels (idle, selected, correct, incorrect, disabled)
+- `Results.jsx` : affichage score final + bouton rejouer
+- Dark mode : classes `dark:` à compléter sur Quiz et Results
+
+### 📈 Évaluation de session
+
+- **Points solides :** Structure Quiz posée proprement. `.find()` + `.map()` avec index double sans aide. Câblage App ↔ Quiz correct (`subject` en prop, `onFinish` reçu).
+- **Points fragiles :** Logique interactive (sélection, soumission, vérification, score) pas encore abordée — c'est le cœur fonctionnel du composant.
+- **Priorité pour la prochaine session :** `selectedAnswer` state → clic sur option → `hasSubmitted` → bouton Submit → vérification → next/finish. Écriture autonome.
+
+### 💬 Notes de contexte
+
+- Session courte, arrêt volontaire avant la partie logique (fatigue)
+- La barre de progression laissée pour la fin — visuel simple une fois la logique en place
+- `onFinish` déjà câblé dans App — Quiz n'a qu'à l'appeler au bon moment
+
+---
+
 ## Session 2026-03-03 — App.jsx + Header + SubjectBadge
 
 ### ✅ Étapes accomplies
