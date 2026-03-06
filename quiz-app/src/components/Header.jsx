@@ -1,9 +1,9 @@
 import SubjectBadge from "./SubjectBadge";
 
-function Header({ mode, onToggleMode, subject }) {
+function Header({ mode, onToggleMode, subject, icon }) {
   return (
     <header className="flex w-full justify-between">
-      <div>{subject && <SubjectBadge subject={subject} />}</div>
+      <div>{subject && <SubjectBadge subject={subject} icon={icon} />}</div>
       <div className="flex gap-2 justify-between w-20 items-center md:w-32">
         <svg
           xmlns="http://www.w3.org/2000/svg"

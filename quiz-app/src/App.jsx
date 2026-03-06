@@ -9,6 +9,8 @@ function App() {
   const [score, setScore] = useState(0);
   const [mode, setMode] = useState("light");
   const [subject, setSubject] = useState(null);
+  const [questionLength, setQuestionLength] = useState(0);
+  const [icon, setIcon] = useState("");
 
   const toggleMode = () => {
     const newMode = mode === "light" ? "dark" : "light";
@@ -20,7 +22,8 @@ function App() {
     home: (
       <Home
         mode={mode}
-        onStart={(chosenSubject) => {
+        onStart={(chosenSubject, icon) => {
+          setIcon(icon);
           setSubject(chosenSubject);
           setCurrentView("quiz");
         }}
@@ -29,7 +32,8 @@ function App() {
     quiz: (
       <Quiz
         subject={subject}
-        onFinish={(finalScore) => {
+        onFinish={(finalScore, questionLength) => {
+          setQuestionLength(questionLength);
           setScore(finalScore);
           setCurrentView("results");
         }}
@@ -38,6 +42,9 @@ function App() {
     results: (
       <Results
         score={score}
+        length={questionLength}
+        subject={subject}
+        icon={icon}
         onRestart={() => {
           setScore(0);
           setCurrentView("home");
@@ -76,7 +83,12 @@ function App() {
         <img src="/images/pattern-background-mobile-light.svg" alt="" />
       </picture>
       <div className="z-20 flex flex-col w-auto">
-        <Header mode={mode} onToggleMode={toggleMode} subject={subject} />
+        <Header
+          mode={mode}
+          onToggleMode={toggleMode}
+          subject={subject}
+          icon={icon}
+        />
         <div className="z-20">{views[currentView]}</div>
       </div>
     </div>

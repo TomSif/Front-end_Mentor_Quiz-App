@@ -19,7 +19,7 @@ function Quiz({ subject, onFinish }) {
 
   useEffect(() => {
     if (hasSubmited && questionIndex === totalQuestions - 1) {
-      onFinish(score);
+      onFinish(score, totalQuestions);
       console.log(score);
     }
   }, [hasSubmited, onFinish, score, questionIndex, totalQuestions]);

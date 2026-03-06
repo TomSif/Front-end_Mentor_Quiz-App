@@ -4,8 +4,8 @@ function Home({ onStart }) {
   const iconColors = [
     "bg-orange-50",
     "bg-blue-50",
-    "bg-green-50",
-    "bg-purple-50",
+    "bg-green-100",
+    "bg-purple-100",
   ];
 
   return (
@@ -26,7 +26,7 @@ function Home({ onStart }) {
             {data.quizzes.map(({ title, icon }, index) => (
               <li key={index}>
                 <button
-                  onClick={() => onStart(title)}
+                  onClick={() => onStart(title, icon)}
                   className="flex gap-4 p-4 items-center text-preset-4-mobile w-full max-w-81 rounded-lg text-blue-900 dark:bg-blue-850 dark:text-white bg-white"
                 >
                   <span
