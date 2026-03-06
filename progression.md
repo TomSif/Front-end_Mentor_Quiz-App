@@ -1,3 +1,47 @@
+## Session 2026-03-06 (matin) — Results.jsx + barre de progression
+
+### ✅ Étapes accomplies
+
+- `Results.jsx` créé : affichage score, total questions, `SubjectBadge`, bouton "Play Again"
+- Câblage `subject` et `icon` dans App → Results (ajout props)
+- Correction `Home.jsx` : `onStart(title, icon)` — deux arguments séparés (et non l'objet complet)
+- `App.jsx` : `icon` state ajouté + passé à Header et Results
+- Barre de progression dans `Quiz.jsx` : calcul `((questionIndex + 1) / totalQuestions) * 100`, rendu via `style={{ width: \`${length}%\` }}`
+
+### 🧠 Notions de code vues
+
+| Notion | Statut | Commentaire |
+| --- | --- | --- |
+| Props comme tuyaux isolés — chaque instance reçoit ses propres props | Consolidée | Déclic clair : "SubjectBadge dans Header fonctionne, donc il fonctionne partout" — gap corrigé après explication |
+| Flux de données descendant — ce qu'un composant reçoit dépend de ce qu'on lui passe | Révisée | Bien compris une fois le cas concret posé |
+| Vérification du type de donnée remontée par un callback | Nouvelle | `onStart(title)` vs `onStart(data.quizzes[index])` — a nécessité de relire le code pour confirmer. TypeScript aurait rendu ça explicite |
+| Barre de progression avec `style` inline | Nouvelle | Calcul pourcentage + `style={{ width }}` — écrit sans aide |
+
+### ⚠️ Notions faussement acquises détectées
+
+- **Réutilisation d'un composant ≠ héritage des données** : pensait que `<SubjectBadge>` dans Results récupèrerait automatiquement les données déjà passées à Header. Confusion entre réutilisation du composant (code partagé) et partage des données (qui ne coule jamais automatiquement).
+
+### 🔄 Étapes restantes
+
+- Dark mode : classes `dark:` à compléter sur Quiz et Results
+- Responsive : vérification layout desktop Quiz et Results
+- Accessibilité : `legend` sémantique à corriger
+- Nettoyage : `console.log(score)` dans `useEffect` à supprimer
+
+### 📈 Évaluation de session
+
+- **Points solides :** `Results.jsx` posé quasi autonomement. Barre de progression écrite sans aide. Bonne auto-régulation (arrêt volontaire avant saturation).
+- **Points fragiles :** Modèle mental "props isolées par instance" pas encore complètement ancré — a surpris sur SubjectBadge. Tendance à multiplier les states dans App plutôt que de passer un objet complet (fonctionne, mais moins élégant).
+- **Priorité pour la prochaine session :** Dark mode Quiz + Results — classes `dark:` à compléter.
+
+### 💬 Notes de contexte
+
+- `subject` dans App est une string (titre), pas l'objet complet — choix fait en cours de route, cohérent avec `.find()` dans Quiz
+- `icon` stocké en state séparé dans App — fonctionne, légère sur-fragmentation de l'état global
+- Session courte volontaire — bonne décision, concentration préservée pour session de l'après-midi
+
+---
+
 ## Session 2026-03-05 — Quiz.jsx : logique interactive complète
 
 ### ✅ Étapes accomplies

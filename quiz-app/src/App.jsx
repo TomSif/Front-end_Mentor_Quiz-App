@@ -54,7 +54,7 @@ function App() {
   };
 
   return (
-    <div className="relative w-auto overflow-hidden py-4 px-8 transition-all duration-300 dark:bg-blue-900 bg-grey-50">
+    <div className="relative w-auto max-h-screen h-screen overflow-hidden py-4 px-8 transition-all duration-300 dark:bg-blue-900 bg-grey-50">
       <picture className="absolute top-0 left-0 z-0 transition-all duration-300">
         <source
           srcSet={
@@ -78,7 +78,7 @@ function App() {
               ? "/images/pattern-background-mobile-dark.svg"
               : "/images/pattern-background-mobile-light.svg"
           }
-          media="(min-width: 480px)"
+          media="(min-width: 1px)"
         />
         <img src="/images/pattern-background-mobile-light.svg" alt="" />
       </picture>
@@ -89,7 +89,7 @@ function App() {
           subject={subject}
           icon={icon}
         />
-        <div className="z-20">{views[currentView]}</div>
+        <div className="z-20 ">{views[currentView]}</div>
       </div>
     </div>
   );

@@ -10,7 +10,8 @@ function Quiz({ subject, onFinish }) {
   const currentQuestion = currentQuiz.questions[questionIndex];
   const totalQuestions = currentQuiz.questions.length; // 10
   const iconLetters = ["A", "B", "C", "D"];
-
+  const length =
+    totalQuestions > 0 ? ((questionIndex + 1) / totalQuestions) * 100 : 0;
   function calculateScore() {
     if (selectedAnswer === currentQuestion.answer) {
       setScore((prev) => prev + 1);
@@ -25,7 +26,7 @@ function Quiz({ subject, onFinish }) {
   }, [hasSubmited, onFinish, score, questionIndex, totalQuestions]);
 
   return (
-    <fieldset className="flex flex-col lg:flex-row w-full lg:justify-between">
+    <fieldset className="flex flex-col lg:flex-row w-full lg:justify-between gap-10">
       <div className="flex flex-col">
         <legend className="text-preset-5-mobile text-grey-500 dark:text-blue-300">
           {questionIndex + 1} out of {totalQuestions}
@@ -33,6 +34,12 @@ function Quiz({ subject, onFinish }) {
         <p className="text-preset-3-mobile text-blue-900 dark:text-white">
           {currentQuestion.question}
         </p>
+        <div className="bg-white dark:blue-850 rounded-md h-4 p-1 w-full flex item-center mt-6 md:mt-10 lg:mt-46">
+          <div
+            className="relative rounded-md  z-50  bg-purple-600 h-2 "
+            style={{ width: `${length}%` }}
+          ></div>
+        </div>
       </div>
       <div className="flex flex-col items-center max-w-81 md:max-w-160 lg:max-w-141 gap-4 md:gap-8">
         <ul className="flex flex-col gap-4 md:gap-6 w-full ">
