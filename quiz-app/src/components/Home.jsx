@@ -9,7 +9,7 @@ function Home({ onStart }) {
   ];
 
   return (
-    <div className="relative w-auto bg-grey-50">
+    <div className="relative w-auto">
       <div className="flex flex-col text-left gap-4 z-10">
         <h1 className="text-preset-2-mobile-light md:text-preset-2-light transition-all duration-200 dark:text-white text-blue-900">
           Welcome to the
