@@ -26,6 +26,7 @@ function Home({ onStart }) {
             {data.quizzes.map(({ title, icon }, index) => (
               <li key={index}>
                 <button
+                  type="button"
                   onClick={() => onStart(title, icon)}
                   className="flex gap-4 p-4 items-center text-preset-4-mobile w-full  rounded-lg text-blue-900 dark:bg-blue-850 dark:text-white bg-white"
                 >

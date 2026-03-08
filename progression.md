@@ -1,3 +1,48 @@
+## Session 2026-03-08 — Finition : dark mode, responsive, accessibilité, états visuels Quiz
+
+### ✅ Étapes accomplies
+
+- Dark mode : complet sur toutes les vues (Quiz, Results, Home, Header)
+- Responsive desktop : layout vérifié et ajusté sur toutes les vues
+- `SubjectBadge` : objet de lookup `bgColors` keyed par `subject` — couleur de fond par matière, sans if/else
+- `Quiz.jsx` : `legend` + `sr-only` sur la question, `aria-hidden="true"` sur le `<p>` visuel — accessibilité correcte
+- `Quiz.jsx` : `dark:bg-blue-850` corrigé (préfixe `bg-` manquant)
+- `Quiz.jsx` : états visuels du badge lettre synchronisés avec les bordures via `getOptionState()` + deux objets de lookup (`borderClasses`, `badgeClasses`)
+- `console.log(score)` supprimé
+- Déployé sur Vercel — tout fonctionnel
+
+### 🧠 Notions de code vues
+
+| Notion | Statut | Commentaire |
+| --- | --- | --- |
+| Objet de lookup keyed par valeur sémantique | Consolidée | `bgColors[subject]`, `borderClasses[state]` — données, pas logique. Principe de localité compris : la donnée vit là où elle est consommée |
+| `fieldset` + `legend` sémantique | Nouvelle | `fieldset` correct pour grouper des contrôles de formulaire. `legend` = la question, masquée avec `sr-only`. `<p>` visuel avec `aria-hidden="true"` |
+| Extraction d'état en fonction helper | Nouvelle | `getOptionState(option)` retourne un string d'état — évite la duplication de la logique conditionnelle entre bordure et badge |
+| Scope des variables dans `.map()` | Révisée | `const state = getOptionState(option)` doit être déclaré à l'intérieur du `.map()` — `option` n'existe pas au niveau du composant. Passage de `() =>` à `() => { return }` |
+| `min-h` vs `height` fixe | Nouvelle | `min-h` pour les boutons interactifs — hauteur de base cohérente, s'étire si contenu long. Jamais `height` fixe sur des éléments dont le contenu peut varier |
+
+### ⚠️ Notions faussement acquises détectées
+
+- **Scope des variables dans `.map()`** : `const state = getOptionState(option)` placé au niveau du composant. Erreur de scope claire une fois signalée — bien corrigé.
+
+### 🔄 Étapes restantes
+
+- Soumission sur Frontend Mentor
+
+### 📈 Évaluation de session
+
+- **Points solides :** Objet de lookup adopté sans résistance. `getOptionState()` compris et implémenté correctement (après correction du scope). Décisions de design autonomes et pertinentes (min-h, hauteurs variables acceptées).
+- **Points fragiles :** Scope des closures dans `.map()` — pas encore un réflexe automatique.
+- **Priorité pour la prochaine session :** Prochain projet — consolider TypeScript ou `useRef` en contexte réel.
+
+### 💬 Notes de contexte
+
+- Projet terminé fonctionnellement et visuellement
+- Background SVG : comportement accepté tel quel (s'arrête à 1440px, couleur de fond prend le relais)
+- `<picture>` avec `absolute` + `h-screen` : approche correcte pour le fond décoratif
+
+---
+
 ## Session 2026-03-06 (matin) — Results.jsx + barre de progression
 
 ### ✅ Étapes accomplies

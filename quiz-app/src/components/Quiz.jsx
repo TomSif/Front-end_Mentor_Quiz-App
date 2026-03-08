@@ -73,6 +73,7 @@ function Quiz({ subject, onFinish }) {
             return (
               <li key={index}>
                 <button
+                  type="button"
                   disabled={hasSubmited}
                   onClick={() => {
                     setSelectedAnswer(option);
@@ -106,6 +107,7 @@ function Quiz({ subject, onFinish }) {
           })}
         </ul>
         <button
+          type="button"
           disabled={selectedAnswer === null}
           onClick={() => {
             if (!hasSubmited) {

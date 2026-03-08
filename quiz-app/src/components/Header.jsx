@@ -10,6 +10,7 @@ function Header({ mode, onToggleMode, subject, icon }) {
           fill="none"
           viewBox="0 0 24 24"
           className={`w-3.5 md:w-5.25 ${mode === "dark" ? "text-white" : "text-grey-500"}`}
+          aria-hidden="true"
         >
           <path
             fill="currentColor"
@@ -20,6 +21,7 @@ function Header({ mode, onToggleMode, subject, icon }) {
           role="switch"
           aria-checked={mode === "dark"}
           onClick={onToggleMode}
+          aria-label="Toggle dark mode"
           className="w-8 md:w-12 h-5 md:h-7 p-1 bg-purple-600 relative flex items-center rounded-full"
         >
           <span
@@ -31,6 +33,7 @@ function Header({ mode, onToggleMode, subject, icon }) {
           fill="none"
           viewBox="0 0 24 24"
           className={`w-3.5 md:w-5.25 ${mode === "dark" ? "text-white" : "text-grey-500"}`}
+          aria-hidden="true"
         >
           <path
             fill="currentColor"
