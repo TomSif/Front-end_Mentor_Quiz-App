@@ -2,7 +2,7 @@ import SubjectBadge from "./SubjectBadge";
 
 function Header({ mode, onToggleMode, subject, icon }) {
   return (
-    <header className="flex w-full justify-between">
+    <header className="flex w-full justify-between pt-4 md:pb-12            lg:pb-21    ">
       <div>{subject && <SubjectBadge subject={subject} icon={icon} />}</div>
       <div className="flex gap-2 justify-between w-20 items-center md:w-32">
         <svg
@@ -20,7 +20,7 @@ function Header({ mode, onToggleMode, subject, icon }) {
           role="switch"
           aria-checked={mode === "dark"}
           onClick={onToggleMode}
-          className="w-8 md:w-12 h-7 p-1 bg-purple-600 relative flex items-center rounded-full"
+          className="w-8 md:w-12 h-5 md:h-7 p-1 bg-purple-600 relative flex items-center rounded-full"
         >
           <span
             className={`bg-white rounded-full w-3 h-3 md:w-5 md:h-5  z-20 transition-transform ${mode === "dark" ? "translate-x-2.5 md:translate-x-5" : "translate-x-0"}`}

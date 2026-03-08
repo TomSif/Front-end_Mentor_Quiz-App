@@ -7,9 +7,9 @@ function SubjectBadge({ subject, icon }) {
   };
 
   return (
-    <div className="flex gap-4 p-4 items-center text-preset-4-mobile w-full max-w-81 rounded-lg text-blue-900  dark:text-white">
+    <div className="relative flex gap-4 p-4 items-center justify-center text-preset-4-mobile w-full  rounded-lg text-blue-900  dark:text-white z-20">
       <span
-        className={`flex items-center justify-center w-10 h-10 rounded-md ${bgColors[subject]}`}
+        className={`flex items-center justify-center min-w-10 h-10 rounded-md ${bgColors[subject]}`}
       >
         <img className="w-7 h-7" src={icon} alt="" />
       </span>

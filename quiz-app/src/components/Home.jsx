@@ -9,7 +9,7 @@ function Home({ onStart }) {
   ];
 
   return (
-    <div className="relative w-auto">
+    <div className="relative  w-full md:max-w-160 pt-8 md:pt-12">
       <div className="flex flex-col text-left gap-4 z-10">
         <h1 className="text-preset-2-mobile-light md:text-preset-2-light transition-all duration-200 dark:text-white text-blue-900">
           Welcome to the
@@ -22,12 +22,12 @@ function Home({ onStart }) {
           Pick a subject to get started.
         </p>
         <div>
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-4 w-full md:max-w-160">
             {data.quizzes.map(({ title, icon }, index) => (
               <li key={index}>
                 <button
                   onClick={() => onStart(title, icon)}
-                  className="flex gap-4 p-4 items-center text-preset-4-mobile w-full max-w-81 rounded-lg text-blue-900 dark:bg-blue-850 dark:text-white bg-white"
+                  className="flex gap-4 p-4 items-center text-preset-4-mobile w-full  rounded-lg text-blue-900 dark:bg-blue-850 dark:text-white bg-white"
                 >
                   <span
                     className={`flex items-center justify-center w-10 h-10 rounded-md ${iconColors[index]}`}
