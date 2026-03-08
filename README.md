@@ -12,7 +12,7 @@
 
 <a href="#description-fr-">🇫🇷 README en Français</a> - <a href="#en-description">🇺🇸 English README</a>
 
-![Design preview for the Frontend quiz app coding challenge](./preview.jpg)
+![Design preview for the Frontend quiz app coding challenge](/quiz-app/public/images/screen-home.png)
 
 ### 🌐 Démo Live :
 
@@ -22,23 +22,29 @@ Déployé sur Vercel avec HTTPS et optimisations de performance.
 
 ---
 
-## Welcome! 👋
+# Frontend Mentor - Frontend Quiz App Solution
 
-Thanks for purchasing this premium Frontend Mentor coding challenge.
+This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/frontend-quiz-app-BE7xkzXQnU). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects. These premium challenges are perfect portfolio pieces, so please feel free to use what you create in your portfolio to show others.
+## Table of contents
 
-**To do this challenge, you need a strong understanding of HTML, CSS, and JavaScript.**
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+  - [AI Collaboration](#ai-collaboration)
+- [Author](#author)
 
-## The challenge
+## Overview
 
-Your challenge is to build out this quiz app and get it looking as close to the design as possible.
+### The challenge
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-We provide the data in a local `data.json` file, so use that to populate the content for the quizzes.
-
-Your users should be able to:
+Users should be able to:
 
 - Select a quiz subject
 - Select a single answer from each question from a choice of four
@@ -52,81 +58,144 @@ Your users should be able to:
 - Navigate the entire app only using their keyboard
 - **Bonus**: Change the app's theme between light and dark
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![](/quiz-app/public/images/screen-quiz.png)
 
-Your task is to build out the project to the design file provided. You can download the Figma design file on the platform. **Please be sure not to share it with anyone else.** The design download comes with a `README.md` file as well to help you get set up.
+### Links
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized. Some are reusable at multiple screen sizes. So if you don't see an image in a specific folder, it will typically be in another folder for that page.
+- Solution URL: [Add solution URL here](https://github.com/TomSif/Front-end_Mentor_Quiz-App/tree/main)
+- Live Site URL: [Add live site URL here](https://quiz-app-omega-topaz.vercel.app/)
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself.
+## My process
 
-The design system in the design file will give you more information about the various colors, fonts, and styles used in this project. Our fonts always come from [Google Fonts](https://fonts.google.com/).
+### Built with
 
-## Using AI coding assistants
+- Semantic HTML5 markup
+- CSS custom properties via Tailwind CSS v4 `@theme`
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [React 19](https://react.dev/) - UI library
+- [Vite](https://vitejs.dev/) - Build tool
+- [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS framework
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+### What I learned
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+#### State management architecture
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+This project reinforced my understanding of React's unidirectional data flow. The `App` component serves as the single source of truth, managing `currentView`, `score`, `subject`, and `mode` states. Child components communicate upward through callback props:
 
-**Note:** These files are designed to help you _learn_, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+```jsx
+const views = {
+  home: <Home onStart={() => setCurrentView("quiz")} />,
+  quiz: (
+    <Quiz
+      onFinish={(finalScore) => {
+        setScore(finalScore);
+        setCurrentView("results");
+      }}
+    />
+  ),
+  results: (
+    <Results
+      score={score}
+      onRestart={() => {
+        setScore(0);
+        setCurrentView("home");
+      }}
+    />
+  ),
+};
+```
 
-## Building your project
+#### Conditional rendering with object maps
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+Rather than chaining ternary operators or switch statements, I used an object map pattern for cleaner view switching:
 
-1. Separate the `starter-code` from the rest of this project and rename it to something meaningful for you. Initialize the codebase as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/). **⚠️ IMPORTANT ⚠️: There are already a couple of `.gitignore` files in this project. Please do not remove them or change the content of the files. If you create a brand new project, please use the `.gitignore` files provided in your new codebase. This is to avoid the accidental upload of the Figma design file to GitHub. With these premium challenges, please be sure not to share the Figma design file in your GitHub repo. Thanks!**
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+```jsx
+return <div>{views[currentView]}</div>;
+```
 
-## Deploying your project
+#### Tailwind CSS v4 dark mode configuration
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+Tailwind v4 defaults to `prefers-color-scheme` for dark mode. Since this is a single-page application that manages its own theme (similar to native apps like Discord or Notion), I configured manual toggle control:
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+```css
+/* Dark mode is manually controlled via UI toggle.
+   prefers-color-scheme is intentionally ignored —
+   the app manages its own theme (native app-like behavior) */
+@variant dark (&:where(.dark, .dark *));
+```
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+This tells Tailwind to apply `dark:` utilities when the `.dark` class is present on an ancestor element, rather than relying on system preferences.
 
-## Create a custom `README.md`
+#### Custom theme colors with Tailwind v4
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+I extended Tailwind's default palette with project-specific colors using the new `@theme` directive:
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+```css
+@theme {
+  --color-navy: #313e51;
+  --color-grey-navy: #3b4d66;
+  --color-light-bluish: #abc1e1;
+  --color-light-grey: #f4f6fa;
+  --color-green: #26d782;
+  --color-red: #ee5454;
+  --color-purple: #a729f5;
+}
+```
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+#### SVG color management with currentColor
 
-## Submitting your solution
+For dynamic icon coloring based on theme, I used the `currentColor` approach rather than conditional fill values:
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+```jsx
+<svg className={mode === "dark" ? "text-gray-500" : "text-white"}>
+  <path fill="currentColor" d="..." />
+</svg>
+```
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+### Continued development
 
-**⚠️ IMPORTANT ⚠️: With these premium challenges, please be sure not to upload the Figma design file to GitHub when you're submitting to the platform and sharing it around. If you've created a brand new project, the easiest way to do that is to copy across the `.gitignore` provided in this starter project.**
+Areas I want to focus on in future projects:
 
-## Sharing your solution
+- **TypeScript integration**: Adding static typing to improve code reliability and developer experience
+- **Component composition patterns**: Exploring more advanced patterns like compound components and render props
+- **Accessibility testing**: Implementing automated a11y testing with tools like axe-core
+- **Animation**: Adding micro-interactions with Framer Motion or CSS animations
+- **State persistence**: Implementing localStorage to save quiz progress and theme preference
 
-There are multiple places you can share your solution:
+### Useful resources
 
-1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community).
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+- [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs) - Essential for understanding the new `@theme` and `@variant` syntax
+- [React Documentation](https://react.dev/) - The new React docs are excellent for understanding hooks and component patterns
+- [MDN Web Docs](https://developer.mozilla.org/) - My go-to reference for CSS and JavaScript fundamentals
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback.
+### AI Collaboration
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+This project was developed with AI assistance from **Claude** (Anthropic), used as a learning companion and technical mentor.
 
-## Got feedback for us?
+**How I used AI:**
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi@frontendmentor.io.
+- **Architectural decisions**: Discussed state management patterns, component hierarchy, and data flow before writing code
+- **Debugging**: Worked through syntax errors and logical issues, particularly around callback props and the ternary operator
+- **Learning concepts**: Deepened understanding of JavaScript closures, React's rendering model, and Tailwind v4's new configuration syntax
+- **Code review**: Got feedback on code structure and naming conventions
 
-**Have fun building!** 🚀
+**What worked well:**
+
+- Using AI as a "rubber duck" to think through architectural decisions before implementation
+- Getting immediate explanations when encountering unfamiliar patterns
+- Having concepts explained in multiple ways until they clicked
+
+**What I learned about AI collaboration:**
+
+- AI is most useful when you come with specific questions rather than vague requests
+- Writing code yourself (even while looking at examples) builds muscle memory that copy-pasting doesn't
+- It's valuable to challenge AI explanations and ask "why" to ensure genuine understanding
+
+## Author
+
+- Website - [Thomas Sifferle](https://thomas-sifferle.com)
+- Frontend Mentor - [@your-username](https://www.frontendmentor.io/profile/TomSif)
