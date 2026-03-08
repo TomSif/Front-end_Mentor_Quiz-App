@@ -27,10 +27,14 @@ function Quiz({ subject, onFinish }) {
   return (
     <fieldset className="flex flex-col lg:flex-row w-full lg:justify-between gap-10  ">
       <div className="flex flex-col md:max-w-160 lg:w-120">
-        <legend className="text-preset-5-mobile text-grey-500 dark:text-blue-300">
+        <legend className="sr-only">{currentQuestion.question}</legend>
+        <p className="text-preset-5-mobile text-grey-500 dark:text-blue-300">
           {questionIndex + 1} out of {totalQuestions}
-        </legend>
-        <p className="text-preset-3-mobile text-blue-900 dark:text-white">
+        </p>
+        <p
+          aria-hidden="true"
+          className="text-preset-3-mobile text-blue-900 dark:text-white"
+        >
           {currentQuestion.question}
         </p>
         <div className="bg-white dark:blue-850 rounded-md h-4 p-1 w-full flex item-center mt-6 md:mt-10 lg:mt-46 ">
@@ -49,7 +53,7 @@ function Quiz({ subject, onFinish }) {
                 onClick={() => {
                   setSelectedAnswer(option);
                 }}
-                className={`flex  gap-4 md:gap-8 p-4 items-center w-full  min-w-full rounded-lg text-blue-900 dark:bg-blue-850 dark:text-white bg-white text-preset-4-mobile md:text-preset-4 ${
+                className={`flex  gap-4 md:gap-8 p-4 items-center w-full  min-w-full min-height-22 rounded-lg text-blue-900 dark:bg-blue-850 dark:text-white bg-white text-preset-4-mobile md:text-preset-4 ${
                   selectedAnswer === option && !hasSubmited
                     ? "border-purple-500 border-2"
                     : hasSubmited && option === currentQuestion.answer

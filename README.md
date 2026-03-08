@@ -1,6 +1,26 @@
 # Frontend Mentor - Frontend quiz app
 
+# Quiz App - Thomas Sifferle 🚀
+
+![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)
+![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)
+![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)
+[![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://github.com/TomSif)
+[![React](https://img.shields.io/badge/react_19-20232a?style=for-the-badge&logo=react&logocolor=61dafb)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/vite-646cff?style=for-the-badge&logo=vite&logocolor=white)](https://vitejs.dev/)
+[![Tailwind](https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss&logocolor=white)](https://tailwindcss.com/)
+
+<a href="#description-fr-">🇫🇷 README en Français</a> - <a href="#en-description">🇺🇸 English README</a>
+
 ![Design preview for the Frontend quiz app coding challenge](./preview.jpg)
+
+### 🌐 Démo Live :
+
+**[Voir le site en ligne →](https://quiz-app-omega-topaz.vercel.app/)**
+
+Déployé sur Vercel avec HTTPS et optimisations de performance.
+
+---
 
 ## Welcome! 👋
 
@@ -53,7 +73,7 @@ We've included two files to help you if you're using AI coding assistants (like 
 
 **How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+**Note:** These files are designed to help you _learn_, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
 
 ## Building your project
 
@@ -96,12 +116,12 @@ Remember, if you're looking for feedback on your solution, be sure to ask questi
 
 There are multiple places you can share your solution:
 
-1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community). 
+1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community).
 2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
 3. Share your solution on other social channels like LinkedIn.
 4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback.
 
 The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
 
