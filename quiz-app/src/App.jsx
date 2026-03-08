@@ -54,8 +54,8 @@ function App() {
   };
 
   return (
-    <div className="relative flex flex-col w-auto min-h-screen overflow-hidden py-4 px-6 md:px-16 lg:px-35 transition-all duration-300 dark:bg-blue-900 bg-grey-50">
-      <picture className="absolute top-0 left-0 z-0 transition-all duration-300">
+    <div className="relative flex flex-col w-auto min-h-screen  overflow-hidden py-4 px-6 md:px-16 lg:px-35 transition-all duration-300 dark:bg-blue-900 bg-grey-50">
+      <picture className="absolute top-0 w-full h-screen left-0 z-0 transition-all duration-300">
         <source
           srcSet={
             mode === "dark"

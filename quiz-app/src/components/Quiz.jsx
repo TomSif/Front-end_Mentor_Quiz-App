@@ -12,11 +12,33 @@ function Quiz({ subject, onFinish }) {
   const iconLetters = ["A", "B", "C", "D"];
   const length =
     totalQuestions > 0 ? ((questionIndex + 1) / totalQuestions) * 100 : 0;
+
   function calculateScore() {
     if (selectedAnswer === currentQuestion.answer) {
       setScore((prev) => prev + 1);
     }
   }
+
+  function getOptionState(option) {
+    if (selectedAnswer === option && !hasSubmited) return "selected";
+    if (hasSubmited && option === currentQuestion.answer) return "correct";
+    if (hasSubmited && selectedAnswer === option) return "incorrect";
+    return "idle";
+  }
+
+  const borderClasses = {
+    selected: "border-purple-500 border-2",
+    correct: "border-green-500 border-2",
+    incorrect: "border-red-500 border-2",
+    idle: "border-2 border-transparent",
+  };
+
+  const badgeClasses = {
+    selected: "bg-purple-500 text-white",
+    correct: "bg-green-500 text-white",
+    incorrect: "bg-red-500 text-white",
+    idle: "bg-grey-50 text-grey-500",
+  };
 
   useEffect(() => {
     if (hasSubmited && questionIndex === totalQuestions - 1) {
@@ -37,7 +59,7 @@ function Quiz({ subject, onFinish }) {
         >
           {currentQuestion.question}
         </p>
-        <div className="bg-white dark:blue-850 rounded-md h-4 p-1 w-full flex item-center mt-6 md:mt-10 lg:mt-46 ">
+        <div className="bg-white dark:bg-blue-850 rounded-md h-4 p-1 w-full flex item-center mt-6 md:mt-10 lg:mt-46 ">
           <div
             className="relative rounded-md  z-50  bg-purple-600 h-2 "
             style={{ width: `${length}%` }}
@@ -46,45 +68,42 @@ function Quiz({ subject, onFinish }) {
       </div>
       <div className="flex flex-col items-center  w-full md:max-w-160 lg:max-w-141 gap-4 md:gap-8">
         <ul className="flex flex-col gap-4 md:gap-6 w-full  ">
-          {currentQuestion.options.map((option, index) => (
-            <li key={index}>
-              <button
-                disabled={hasSubmited}
-                onClick={() => {
-                  setSelectedAnswer(option);
-                }}
-                className={`flex  gap-4 md:gap-8 p-4 items-center w-full  min-w-full min-height-22 rounded-lg text-blue-900 dark:bg-blue-850 dark:text-white bg-white text-preset-4-mobile md:text-preset-4 ${
-                  selectedAnswer === option && !hasSubmited
-                    ? "border-purple-500 border-2"
-                    : hasSubmited && option === currentQuestion.answer
-                      ? "border-green-500 border-2"
-                      : hasSubmited && selectedAnswer === option
-                        ? "border-red-500 border-2"
-                        : "border-2 border-transparent"
-                }`}
-              >
-                <span className="flex items-center justify-center w-10 h-10 rounded-md bg-grey-50 text-grey-500 ">
-                  {iconLetters[index]}
-                </span>
-                <span className="flex justify-between w-full item-center">
-                  <span className="dark:text-white text-blue-900">
-                    {option}
+          {currentQuestion.options.map((option, index) => {
+            const state = getOptionState(option);
+            return (
+              <li key={index}>
+                <button
+                  disabled={hasSubmited}
+                  onClick={() => {
+                    setSelectedAnswer(option);
+                  }}
+                  className={`flex  gap-4 md:gap-8 p-4 items-center w-full  min-w-full min-height-22 rounded-lg text-blue-900 dark:bg-blue-850 dark:text-white bg-white text-preset-4-mobile md:text-preset-4 ${borderClasses[state]} `}
+                >
+                  <span
+                    className={`flex items-center justify-center w-10 h-10 rounded-md  text-grey-500 ${badgeClasses[state]} `}
+                  >
+                    {iconLetters[index]}
                   </span>
-                  {hasSubmited && option === currentQuestion.answer ? (
-                    <span className="w-6">
-                      <img src="/images/icon-correct.svg" alt="" />
+                  <span className="flex justify-between w-full item-center">
+                    <span className="dark:text-white text-blue-900">
+                      {option}
                     </span>
-                  ) : hasSubmited && selectedAnswer === option ? (
-                    <span className="w-6">
-                      <img src="/images/icon-incorrect.svg" alt="" />
-                    </span>
-                  ) : (
-                    <span className="w-6"></span>
-                  )}
-                </span>
-              </button>
-            </li>
-          ))}
+                    {hasSubmited && option === currentQuestion.answer ? (
+                      <span className="w-6">
+                        <img src="/images/icon-correct.svg" alt="" />
+                      </span>
+                    ) : hasSubmited && selectedAnswer === option ? (
+                      <span className="w-6">
+                        <img src="/images/icon-incorrect.svg" alt="" />
+                      </span>
+                    ) : (
+                      <span className="w-6"></span>
+                    )}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
         </ul>
         <button
           disabled={selectedAnswer === null}
