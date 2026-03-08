@@ -25,21 +25,27 @@
 
 - **Scope des variables dans `.map()`** : `const state = getOptionState(option)` placé au niveau du composant. Erreur de scope claire une fois signalée — bien corrigé.
 
-### 🔄 Étapes restantes
+### ✅ Finalisation
 
-- Soumission sur Frontend Mentor
+- `type="button"` ajouté sur tous les boutons non-submit (Home, Quiz x2)
+- `aria-label="Toggle dark mode"` ajouté sur le toggle Header
+- `aria-hidden="true"` ajouté sur les SVGs décoratifs soleil/lune
+- README mis à jour
+- Projet soumis sur Frontend Mentor
+- Peer review réalisée dans la foulée
+- **Objectif respecté : projet posté en une semaine**
 
-### 📈 Évaluation de session
+### 📈 Évaluation finale du projet
 
-- **Points solides :** Objet de lookup adopté sans résistance. `getOptionState()` compris et implémenté correctement (après correction du scope). Décisions de design autonomes et pertinentes (min-h, hauteurs variables acceptées).
-- **Points fragiles :** Scope des closures dans `.map()` — pas encore un réflexe automatique.
-- **Priorité pour la prochaine session :** Prochain projet — consolider TypeScript ou `useRef` en contexte réel.
+- **Points solides :** Architecture React propre et autonome. Dark mode, responsive, accessibilité traités. Objet de lookup comme pattern ancré. `getOptionState()` — extraction de logique comprise. Régularité maintenue sur 6 jours malgré la fatigue.
+- **Points à consolider sur le prochain projet :** Scope des closures dans `.map()`, `useRef` en contexte réel, TypeScript si le moment est venu.
+- **Rythme :** Sessions courtes et focalisées — bonne décision maintenue tout au long du projet.
 
 ### 💬 Notes de contexte
 
-- Projet terminé fonctionnellement et visuellement
 - Background SVG : comportement accepté tel quel (s'arrête à 1440px, couleur de fond prend le relais)
 - `<picture>` avec `absolute` + `h-screen` : approche correcte pour le fond décoratif
+- Déployé sur Vercel + soumis Frontend Mentor — projet 100% terminé
 
 ---
 

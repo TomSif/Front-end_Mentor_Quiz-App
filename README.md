@@ -198,4 +198,4 @@ This project was developed with AI assistance from **Claude** (Anthropic), used 
 ## Author
 
 - Website - [Thomas Sifferle](https://thomas-sifferle.com)
-- Frontend Mentor - [@your-username](https://www.frontendmentor.io/profile/TomSif)
+- Frontend Mentor - [@TomSif](https://www.frontendmentor.io/profile/TomSif)
